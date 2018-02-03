@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dashboard.API", "Dashboard.API\Dashboard.API.csproj", "{F33DAF58-64BD-4A72-8E6D-52D91EFB3FFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F33DAF58-64BD-4A72-8E6D-52D91EFB3FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F33DAF58-64BD-4A72-8E6D-52D91EFB3FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F33DAF58-64BD-4A72-8E6D-52D91EFB3FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F33DAF58-64BD-4A72-8E6D-52D91EFB3FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
