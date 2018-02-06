@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Dashboard.API.Application.Infrastructure.Identity;
+using Dashboard.API.Infrastructure.Identity;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Dashboard.API
 {
@@ -19,6 +15,8 @@ namespace Dashboard.API
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureServices(services =>
+                    services.AddTransient<IValidateAuthToken, AmazonValidateAuthToken>())
                 .UseStartup<Startup>()
                 .Build();
     }

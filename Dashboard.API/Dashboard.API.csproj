@@ -5,12 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Domain\**" />
+    <Compile Remove="Persistence\**" />
+    <Content Remove="Domain\**" />
+    <Content Remove="Persistence\**" />
+    <EmbeddedResource Remove="Domain\**" />
+    <EmbeddedResource Remove="Persistence\**" />
+    <None Remove="Domain\**" />
+    <None Remove="Persistence\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Application\Services\" />
+    <Folder Include="Controllers\ViewModels\" />
     <Folder Include="wwwroot\" />
     <Folder Include="Models\" />
-    <Folder Include="Infrastructure\" />
-    <Folder Include="Domain\" />
-    <Folder Include="Persistence\" />
-    <Folder Include="Infrastructure\Identity\" />
   </ItemGroup>
 
   <ItemGroup>
