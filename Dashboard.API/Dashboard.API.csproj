@@ -5,29 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Domain\**" />
-    <Compile Remove="Persistence\**" />
-    <Content Remove="Domain\**" />
-    <Content Remove="Persistence\**" />
-    <EmbeddedResource Remove="Domain\**" />
-    <EmbeddedResource Remove="Persistence\**" />
-    <None Remove="Domain\**" />
-    <None Remove="Persistence\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Application\Services\" />
-    <Folder Include="Controllers\ViewModels\" />
-    <Folder Include="wwwroot\" />
-    <Folder Include="Models\" />
+    <Compile Remove="wwwroot\**" />
+    <Content Remove="wwwroot\**" />
+    <EmbeddedResource Remove="wwwroot\**" />
+    <None Remove="wwwroot\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="AWSSDK.Core" Version="3.3.21.9" />
     <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.4" />
-    <PackageReference Include="AWSSDK.CognitoIdentity" Version="3.3.2.17" />
-    <PackageReference Include="AWSSDK.CognitoIdentityProvider" Version="3.3.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>

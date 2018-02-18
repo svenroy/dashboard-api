@@ -1,8 +1,10 @@
-﻿using Amazon.CognitoIdentityProvider;
-using Dashboard.API.Application.Infrastructure.Identity;
+﻿using Dashboard.API.Application.Infrastructure.Identity;
+using Dashboard.API.Application.Infrastructure.Persistence;
+using Dashboard.API.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
@@ -59,10 +61,14 @@ namespace Dashboard.API
                 };
             });
 
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+
+            services.AddDbContext<SeviiContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection2")));
+
             services.AddMvc();
 
             services.AddDefaultAWSOptions(Configuration.GetAWSOptions());
-            services.AddAWSService<IAmazonCognitoIdentityProvider>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
