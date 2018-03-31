@@ -11,9 +11,10 @@ using System;
 namespace Dashboard.API.Migrations
 {
     [DbContext(typeof(SeviiContext))]
-    partial class SeviiContextModelSnapshot : ModelSnapshot
+    [Migration("20180320192351_AddedIsSubscribedToSubscriptions")]
+    partial class AddedIsSubscribedToSubscriptions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

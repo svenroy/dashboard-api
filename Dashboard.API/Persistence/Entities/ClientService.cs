@@ -1,20 +1,26 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Dashboard.API.Infrastructure.Persistence.Entities
+namespace Dashboard.API.Persistence.Entities
 {
     public class ClientService
     {
         public Guid Id { get; set; }
 
         [Required]
-        public Guid Client { get; set; }
+        [ForeignKey("Client")]
+        public Guid ClientId { get; set; }
+
+        public Client Client { get; set; }
 
         [Required]
         public string Name { get; set; }
 
         [Required]
-        public string Url { get; set; }
+        public string Key { get; set; }
+
+        public string DefaultValue { get; set; }
 
         public string Description { get; set; }
 

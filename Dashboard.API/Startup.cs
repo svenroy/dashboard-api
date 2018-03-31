@@ -1,6 +1,7 @@
 ﻿using Dashboard.API.Application.Infrastructure.Identity;
-using Dashboard.API.Application.Infrastructure.Persistence;
-using Dashboard.API.Infrastructure.Persistence;
+using Dashboard.API.Application.Persistence;
+using Dashboard.API.Persistence;
+using Elmah.Io.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +32,8 @@ namespace Dashboard.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+
+            services.Configure<ElmahIoOptions>(Configuration.GetSection("ElmahIo"));
 
             services.AddAuthentication(options =>
             {
@@ -63,6 +66,7 @@ namespace Dashboard.API
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
+
             services.AddDbContext<SeviiContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection2")));
 
@@ -78,11 +82,21 @@ namespace Dashboard.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseElmahIo();
+
             app.UseCors(builder => builder
-                .WithOrigins("http://localhost:3000")
+                .WithOrigins(
+                    "http://localhost:3000",
+                    "http://dashboard-user-app.s3-website-eu-west-1.amazonaws.com")
                 .AllowAnyOrigin()
                 .AllowAnyHeader()
                 .AllowAnyMethod());
+
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<SeviiContext>();
+                context.Database.Migrate();
+            }
 
             app.UseAuthentication();
             app.UseMvc();

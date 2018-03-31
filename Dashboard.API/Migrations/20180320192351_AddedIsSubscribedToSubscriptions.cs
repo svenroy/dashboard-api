@@ -4,22 +4,22 @@ using System.Collections.Generic;
 
 namespace Dashboard.API.Migrations
 {
-    public partial class AddedClientIdToClientServices : Migration
+    public partial class AddedIsSubscribedToSubscriptions : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<Guid>(
-                name: "Client",
-                table: "ClientServices",
+            migrationBuilder.AddColumn<bool>(
+                name: "IsSubscribed",
+                table: "UserSubscriptions",
                 nullable: false,
-                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
+                defaultValue: false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Client",
-                table: "ClientServices");
+                name: "IsSubscribed",
+                table: "UserSubscriptions");
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Dashboard.API.Infrastructure.Persistence.Entities;
+﻿using Dashboard.API.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dashboard.API.Infrastructure.Persistence
+namespace Dashboard.API.Persistence
 {
     public class SeviiContext : DbContext
     {
@@ -11,8 +11,10 @@ namespace Dashboard.API.Infrastructure.Persistence
 
         }
 
+        public DbSet<UserSubscription> UserSubscriptions { get; set; }
+
         public DbSet<ClientService> ClientServices { get; set; }
 
-        public DbSet<ClientProfile> ClientProfiles { get; set; }
+        public DbSet<Client> Clients { get; set; }
     }
 }

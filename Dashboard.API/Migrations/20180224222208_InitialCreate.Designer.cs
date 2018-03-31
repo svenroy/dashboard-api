@@ -11,9 +11,10 @@ using System;
 namespace Dashboard.API.Migrations
 {
     [DbContext(typeof(SeviiContext))]
-    partial class SeviiContextModelSnapshot : ModelSnapshot
+    [Migration("20180224222208_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,8 +68,6 @@ namespace Dashboard.API.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<Guid>("ClientServiceId");
-
-                    b.Property<bool>("IsSubscribed");
 
                     b.Property<Guid>("UserId");
 
